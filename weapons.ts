@@ -2,7 +2,7 @@ type Weapon = {
   name: string;
   damage: WeaponDamage;
   classification: WeaponCategory;
-  category: 'simple' | 'marciais' | 'exoticas';
+  category: 'simple' | 'marciais' | 'exotic';
   damageMultiplier?: number;
   weight?: number;
   critical?: number;
@@ -15,7 +15,7 @@ type Weapon = {
   ammunition?: {
     quantity?: number;
     quantityToBuy: number;
-    type: 'arrow' | 'bullets' | 'vigotes';
+    type: 'arrow' | 'bullets' | 'vigotes' | 'ammunation';
     weight: number;
     price: number;
     typeTibar: TypesTibar;
@@ -41,8 +41,10 @@ type WeaponDamage =
   | '1d10'
   | '2d4'
   | '2d6'
+  | '2d8'
   | '4d6'
-  | '1d12';
+  | '1d12'
+  | '1d8/1d8';
 
 /* Weapon leves */
 const adaga: Weapon = {
@@ -316,26 +318,6 @@ const granade: Weapon = {
   classification: 'distancia',
   category: 'simple',
 };
-
-const simpleListWeapons: Weapon[] = [
-  adaga,
-  ataqueDesarmado,
-  espadaCurta,
-  clava,
-  lanca,
-  maca,
-  bordao,
-  pique,
-  tacape,
-  acido,
-  aguaBenta,
-  arcoCurto,
-  azagaia,
-  bestaLeve,
-  fogoAlquimico,
-  funda,
-  granade,
-];
 
 /* martial Leves */
 const escudoLeve: Weapon = {
@@ -687,6 +669,310 @@ const bestaPesada: Weapon = {
   },
 };
 
+/* Exotic */
+
+const nunchaku: Weapon = {
+  name: 'nunchaku',
+  damage: '1d6',
+  damageMultiplier: 3,
+
+  price: 2,
+  typeTibar: 'goldTibar',
+
+  weight: 1,
+
+  type: 'esmagamento',
+  category: 'exotic',
+  classification: 'leves',
+};
+
+const sai: Weapon = {
+  name: 'sai',
+  damage: '1d6',
+  damageMultiplier: 2,
+
+  price: 5,
+  typeTibar: 'goldTibar',
+
+  distance: 3,
+  weight: 0.5,
+
+  type: 'esmagamento',
+  category: 'exotic',
+  classification: 'leves',
+};
+
+const wakizashi: Weapon = {
+  name: 'wakizashi',
+  damage: '1d8',
+  damageMultiplier: 19 | 20,
+
+  price: 350,
+  typeTibar: 'goldTibar',
+
+  weight: 1,
+
+  type: 'corte',
+  category: 'exotic',
+  classification: 'leves',
+};
+
+/* uma mao */
+
+const chicote: Weapon = {
+  name: 'chicote',
+  damage: '1d3',
+  damageMultiplier: 2,
+
+  price: 1,
+  typeTibar: 'goldTibar',
+
+  weight: 1,
+
+  type: 'corte',
+  category: 'exotic',
+  classification: 'uma mao',
+};
+
+const espadaBastarda: Weapon = {
+  name: 'espada bastarda',
+  damage: '1d10',
+  damageMultiplier: 19 | 20,
+
+  price: 35,
+  typeTibar: 'goldTibar',
+
+  weight: 3,
+
+  type: 'corte',
+  category: 'exotic',
+  classification: 'uma mao',
+};
+
+const katana: Weapon = {
+  name: 'katana',
+  damage: '1d10',
+  damageMultiplier: 19 | 20,
+
+  price: 400,
+  typeTibar: 'goldTibar',
+
+  weight: 3,
+
+  type: 'corte',
+  category: 'exotic',
+  classification: 'uma mao',
+};
+
+const machadoAnao: Weapon = {
+  name: 'machado anao',
+  damage: '1d10',
+  damageMultiplier: 3,
+
+  price: 30,
+  typeTibar: 'goldTibar',
+
+  weight: 2,
+
+  type: 'corte',
+  category: 'exotic',
+  classification: 'uma mao',
+};
+
+const sabreSerrilhado: Weapon = {
+  name: 'sabre serrilhado',
+  damage: '1d8',
+  damageMultiplier: 19 | 20,
+
+  price: 500,
+  typeTibar: 'goldTibar',
+
+  weight: 2,
+
+  type: 'corte',
+  category: 'exotic',
+  classification: 'uma mao',
+};
+
+/* duas maos */
+
+const correnteComCravos: Weapon = {
+  name: 'corrente com cravos',
+  damage: '2d4',
+  damageMultiplier: 2,
+
+  price: 25,
+  typeTibar: 'goldTibar',
+
+  weight: 5,
+
+  type: 'perfuracao',
+  category: 'exotic',
+  classification: 'duas maos',
+};
+
+const espadaDuasLaminas: Weapon = {
+  name: 'espada duas laminas',
+  damage: '1d8/1d8',
+  damageMultiplier: 19 | 20,
+
+  price: 100,
+  typeTibar: 'goldTibar',
+
+  weight: 2,
+
+  type: 'corte',
+  category: 'exotic',
+  classification: 'duas maos',
+};
+
+const espadaTaurica: Weapon = {
+  name: 'espada taurica',
+  damage: '2d8',
+  damageMultiplier: 2,
+
+  price: 50,
+  typeTibar: 'goldTibar',
+
+  weight: 7.5,
+
+  type: 'corte',
+  category: 'exotic',
+  classification: 'duas maos',
+};
+
+const marretaEstilhacadora: Weapon = {
+  name: 'marreta estilhacadora',
+  damage: '1d12',
+  damageMultiplier: 19 | 20,
+
+  price: 50,
+  typeTibar: 'goldTibar',
+
+  weight: 7,
+
+  type: 'esmagamento',
+  category: 'exotic',
+  classification: 'duas maos',
+};
+
+/* distancia */
+
+const mosquete: Weapon = {
+  name: 'mosquete',
+  damage: '2d8',
+  damageMultiplier: 19 | 20 | 3,
+
+  price: 500,
+  typeTibar: 'goldTibar',
+
+  distance: 45,
+  weight: 5,
+
+  type: 'perfuracao',
+  category: 'exotic',
+  classification: 'distancia',
+
+  ammunition: {
+    type: 'ammunation',
+    weight: 1,
+    quantityToBuy: 10,
+    quantity: 0,
+    price: 50,
+    typeTibar: 'goldTibar',
+  },
+};
+
+const pistola: Weapon = {
+  name: 'pistola',
+  damage: '2d6',
+  damageMultiplier: 19 | 20 | 3,
+
+  price: 250,
+  typeTibar: 'goldTibar',
+
+  distance: 15,
+  weight: 1.5,
+
+  type: 'perfuracao',
+  category: 'exotic',
+  classification: 'distancia',
+
+  ammunition: {
+    type: 'ammunation',
+    weight: 1,
+    quantityToBuy: 10,
+    quantity: 0,
+    price: 35,
+    typeTibar: 'goldTibar',
+  },
+};
+
+const rede: Weapon = {
+  name: 'rede',
+  damage: '1d4',
+
+  price: 20,
+  typeTibar: 'goldTibar',
+
+  distance: 3,
+  weight: 3,
+
+  category: 'exotic',
+  classification: 'distancia',
+};
+
+const shuriken: Weapon = {
+  name: 'shuriken',
+  damage: '1d4',
+  damageMultiplier: 2,
+
+  price: 1,
+  typeTibar: 'goldTibar',
+
+  distance: 3,
+  weight: 0.25,
+
+  category: 'exotic',
+  classification: 'distancia',
+};
+
+const taitai: Weapon = {
+  name: 'taitai',
+  damage: '2d4',
+  damageMultiplier: 2,
+
+  price: 40,
+  typeTibar: 'goldTibar',
+
+  distance: 24,
+  weight: 2,
+
+  type: 'esmagamento',
+  category: 'exotic',
+  classification: 'distancia',
+};
+
+const simpleListWeapons: Weapon[] = [
+  adaga,
+  ataqueDesarmado,
+  espadaCurta,
+  clava,
+  lanca,
+  maca,
+  bordao,
+  pique,
+  tacape,
+  acido,
+  aguaBenta,
+  arcoCurto,
+  azagaia,
+  bestaLeve,
+  fogoAlquimico,
+  funda,
+  granade,
+];
+
 const martialListWeapons: Weapon[] = [
   escudoLeve,
   machadinha,
@@ -709,4 +995,30 @@ const martialListWeapons: Weapon[] = [
   arcoComposto,
   arcoLongo,
   bestaPesada,
+];
+
+const exoticListWeapons: Weapon[] = [
+  nunchaku,
+  sai,
+  wakizashi,
+  chicote,
+  espadaBastarda,
+  katana,
+  machadoAnao,
+  sabreSerrilhado,
+  correnteComCravos,
+  espadaDuasLaminas,
+  espadaTaurica,
+  marretaEstilhacadora,
+  mosquete,
+  pistola,
+  rede,
+  shuriken,
+  taitai,
+];
+
+const allWeapons: Weapon[] = [
+  ...simpleListWeapons,
+  ...martialListWeapons,
+  ...exoticListWeapons,
 ];
